@@ -1,6 +1,6 @@
 import React from 'react'
 
-const cart = () => {
+const Cart = () => {
     return (
         <section className="text-gray-600 body-font overflow-hidden">
             <div className="container px-5 md:py-18 py-10 mx-auto">
@@ -40,4 +40,4 @@ const cart = () => {
     )
 }
 
-export default cart
+export default Cart
