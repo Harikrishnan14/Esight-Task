@@ -11,7 +11,7 @@ export default function Home() {
       </Head>
 
       <section class="text-gray-600 body-font">
-        <div class="container px-5 py-24 mx-auto">
+        <div class="container px-5 md:py-18 py-10 mx-auto">
           <div class="flex flex-wrap -m-4">
             {Array.from({ length: 12 }).map(() => (
               <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
