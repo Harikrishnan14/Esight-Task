@@ -1,7 +1,12 @@
 import Head from "next/head";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function Home({ products }) {
+  const [searchTerm, setSearchTerm] = useState('')
+  const filteredProducts = products?.filter((item) =>
+    item.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
   return (
     <>
       <Head>
@@ -12,20 +17,34 @@ export default function Home({ products }) {
       </Head>
 
       <section className="text-gray-600 body-font">
-        <div className="container px-5 md:py-18 py-10 mx-auto">
+        <div className="container px-5 md:py-10 py-10 mx-auto">
+          <div className="flex justify-end mb-12">
+            <input
+              type="text"
+              onChange={(e) => setSearchTerm(e.target.value)}
+              placeholder="Search products..."
+              className="px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent w-full max-w-xs"
+            />
+          </div>
           <div className="flex flex-wrap -m-4 gap-8 md:gap-0">
-            {products?.map((item) => (
-              <Link className="lg:w-1/4 md:w-1/2 p-6 w-full shadow-md md:shadow-none" key={item.id} href={`/product/${item?.id}`}>
-                <div className="block relative h-48 rounded overflow-hidden">
-                  <img alt="ecommerce" className="object-contain object-center w-full h-full block" src={item?.image} />
-                </div>
-                <div className="mt-4">
-                  <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">{item.category}</h3>
-                  <h2 className="text-gray-700 title-font text-lg font-normal">{item?.title.length > 50 ? `${item?.title.slice(0,50)}...` : item?.title}</h2>
-                  <p className="mt-1 text-xl font-semibold text-gray-900">${item?.price}</p>
-                </div>
-              </Link>
-            ))}
+            {filteredProducts.length === 0 ? (
+              <div className="flex items-center justify-center w-full h-[60vh]">
+                <span className="text-gray-700 text-xl title-font font-medium">No Data!!!</span>
+              </div>
+            ) :
+              filteredProducts?.map((item) => (
+                <Link className="lg:w-1/4 md:w-1/2 p-6 w-full shadow-md md:shadow-none" key={item.id} href={`/product/${item?.id}`}>
+                  <div className="block relative h-48 rounded overflow-hidden">
+                    <img alt="ecommerce" className="object-contain object-center w-full h-full block" src={item?.image} />
+                  </div>
+                  <div className="mt-4">
+                    <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">{item.category}</h3>
+                    <h2 className="text-gray-700 title-font text-lg font-normal">{item?.title.length > 50 ? `${item?.title.slice(0, 50)}...` : item?.title}</h2>
+                    <p className="mt-1 text-xl font-semibold text-gray-900">${item?.price}</p>
+                  </div>
+                </Link>
+              ))
+            }
           </div>
         </div>
       </section>
