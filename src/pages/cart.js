@@ -1,8 +1,11 @@
 import React, { useContext } from 'react'
 import { CartContext } from '../contexts/CartContext'
+import { useRouter } from 'next/router'
 
 const Cart = () => {
     const { cart, handleQty, removeFromCart } = useContext(CartContext)
+    const router = useRouter()
+    
     const totalCount = Object.values(cart).reduce((sum, item) => sum + item.quantity, 0);
     const totalPrice = Object.values(cart).reduce((sum, item) => sum + item.quantity * item.price, 0).toFixed(2);
     return (
@@ -10,7 +13,7 @@ const Cart = () => {
             {Object.keys(cart).length === 0 &&
                 <div className='w-full h-[60vh] flex flex-col items-center justify-center '>
                     <h4 className="text-gray-900 title-font text-2xl font-semibold mb-4">Your Cart is Empty!</h4>
-                    <button className="flex text-white bg-indigo-500 text-sm border-0 py-2 px-6 focus:outline-none cursor-pointer hover:bg-indigo-600 rounded">Continue Shopping</button>
+                    <button className="flex text-white bg-indigo-500 text-sm border-0 py-2 px-6 focus:outline-none cursor-pointer hover:bg-indigo-600 rounded" onClick={() => router.push('/')}>Continue Shopping</button>
                 </div>
             }
             <div className="container px-5 md:py-18 py-10 mx-auto">

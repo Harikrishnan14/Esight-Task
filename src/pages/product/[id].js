@@ -1,7 +1,7 @@
 import { CartContext } from '@/src/contexts/CartContext'
 import React, { useContext, useState } from 'react'
 
-const Slug = ({ product }) => {
+const ProductPage = ({ product }) => {
     const [expanded, setExpanded] = useState(false)
     const { addToCart } = useContext(CartContext)
     return (
@@ -37,10 +37,10 @@ const Slug = ({ product }) => {
     )
 }
 
-export default Slug;
+export default ProductPage;
 
 export async function getServerSideProps(context) {
-    const response = await fetch(`https://fakestoreapi.com/products/${context.query.slug}`)
+    const response = await fetch(`https://fakestoreapi.com/products/${context.params.id}`)
     const product = await response.json()
     return {
         props: {
