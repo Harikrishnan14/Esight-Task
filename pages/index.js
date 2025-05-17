@@ -10,18 +10,18 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <section class="text-gray-600 body-font">
-        <div class="container px-5 md:py-18 py-10 mx-auto">
-          <div class="flex flex-wrap -m-4">
-            {Array.from({ length: 12 }).map(() => (
-              <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                <a class="block relative h-48 rounded overflow-hidden">
-                  <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://dummyimage.com/420x260" />
+      <section className="text-gray-600 body-font">
+        <div className="container px-5 md:py-18 py-10 mx-auto">
+          <div className="flex flex-wrap -m-4">
+            {Array.from({ length: 12 }).map((_, index) => (
+              <div className="lg:w-1/4 md:w-1/2 p-4 w-full" key={index}>
+                <a className="block relative h-48 rounded overflow-hidden">
+                  <img alt="ecommerce" className="object-cover object-center w-full h-full block" src="https://dummyimage.com/420x260" />
                 </a>
-                <div class="mt-4">
-                  <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                  <h2 class="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-                  <p class="mt-1">$16.00</p>
+                <div className="mt-4">
+                  <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
+                  <h2 className="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
+                  <p className="mt-1">$16.00</p>
                 </div>
               </div>
             ))}
