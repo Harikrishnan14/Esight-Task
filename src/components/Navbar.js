@@ -21,7 +21,7 @@ const Navbar = () => {
                     <Link href={'/contact'} className="mr-5 hover:text-gray-900 cursor-pointer">Contact</Link>
                 </nav>
                 <Link href={'/cart'} className="inline-flex items-center border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 cursor-pointer rounded text-base mt-4 md:mt-0">
-                    <Badge badgeContent={Object.keys(cart)?.length} color="error">
+                    <Badge badgeContent={Object.values(cart)?.reduce((total, item) => total + (item.quantity || 0), 0)} color="error">
                         <ShoppingCartIcon />
                     </Badge>
                 </Link>
