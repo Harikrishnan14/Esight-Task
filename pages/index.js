@@ -21,7 +21,7 @@ export default function Home({ products }) {
                 </div>
                 <div className="mt-4">
                   <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">{item.category}</h3>
-                  <h2 className="text-gray-700 title-font text-lg font-normal">{item?.title.length > 35 ? `${item?.title}...` : item?.title}</h2>
+                  <h2 className="text-gray-700 title-font text-lg font-normal">{item?.title.length > 50 ? `${item?.title.slice(0,50)}...` : item?.title}</h2>
                   <p className="mt-1 text-xl font-semibold text-gray-900">${item?.price}</p>
                 </div>
               </Link>
