@@ -7,6 +7,12 @@ const Cart = () => {
     const totalPrice = Object.values(cart).reduce((sum, item) => sum + item.quantity * item.price, 0).toFixed(2);
     return (
         <section className="text-gray-600 body-font overflow-hidden">
+            {Object.keys(cart).length === 0 &&
+                <div className='w-full h-[60vh] flex flex-col items-center justify-center '>
+                    <h4 className="text-gray-900 title-font text-2xl font-semibold mb-4">Your Cart is Empty!</h4>
+                    <button className="flex text-white bg-indigo-500 text-sm border-0 py-2 px-6 focus:outline-none cursor-pointer hover:bg-indigo-600 rounded">Continue Shopping</button>
+                </div>
+            }
             <div className="container px-5 md:py-18 py-10 mx-auto">
                 <div className="-my-8 divide-y-2 divide-gray-100">
                     {Object.keys(cart)?.map((item) => (
@@ -37,8 +43,12 @@ const Cart = () => {
                         </div>
                     ))}
                 </div>
-                <h4 className='mt-8 md:my-8 mb-6 pt-8 border-t-1 border-gray-300 text-xl font-medium text-gray-900 title-font text-center md:text-right'>{`Subtotal (${totalCount} items): $${totalPrice}`}</h4>
-                <button className="flex md:ml-auto md:mr-0 mx-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none cursor-pointer hover:bg-indigo-600 rounded">Proceed to Buy</button>
+                {Object.keys(cart).length !== 0 && (
+                    <>
+                        <h4 className='mt-8 md:my-8 mb-6 pt-8 border-t-1 border-gray-300 text-xl font-medium text-gray-900 title-font text-center md:text-right'>{`Subtotal (${totalCount} items): $${totalPrice}`}</h4>
+                        <button className="flex md:ml-auto md:mr-0 mx-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none cursor-pointer hover:bg-indigo-600 rounded">Proceed to Buy</button>
+                    </>
+                )}
             </div>
         </section>
     )
