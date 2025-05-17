@@ -21,9 +21,32 @@ const CartProvider = ({ children }) => {
             })
         }
     }
+console.log(cart);
+
+    const handleQty = (id, type) => {
+        console.log(id);
+        
+        if (type === "inc") {
+            setCart({
+                ...cart, [id]: {
+                    ...cart[id], quantity: cart[id].quantity + 1
+                }
+            })
+        } else {
+            if (cart[id].quantity > 1) {
+                setCart({
+                    ...cart, [id]: {
+                        ...cart[id], quantity: cart[id].quantity - 1
+                    }
+                })
+            } else {
+                // removeFromcart()
+            }
+        }
+    }
 
     return (
-        <CartContext.Provider value={{ cart, addToCart }}>
+        <CartContext.Provider value={{ cart, addToCart, handleQty }}>
             {children}
         </CartContext.Provider>
     )
