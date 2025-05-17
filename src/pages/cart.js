@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { CartContext } from '../contexts/CartContext'
 
 const Cart = () => {
-    const { cart, handleQty } = useContext(CartContext)
+    const { cart, handleQty, removeFromCart } = useContext(CartContext)
     const totalCount = Object.values(cart).reduce((sum, item) => sum + item.quantity, 0);
     const totalPrice = Object.values(cart).reduce((sum, item) => sum + item.quantity * item.price, 0).toFixed(2);
     return (
@@ -30,7 +30,7 @@ const Cart = () => {
                                         <button className="p-1 bg-gray-100 hover:bg-gray-200 text-xl font-bold cursor-pointer" onClick={() => handleQty(cart[item].id, "inc")}>+</button>
                                     </div>
                                 </div>
-                                <button className="mt-4 text-red-600 hover:text-red-800 font-medium underline cursor-pointer">
+                                <button className="mt-4 text-red-600 hover:text-red-800 font-medium underline cursor-pointer" onClick={() => removeFromCart(cart[item].id)}>
                                     Remove
                                 </button>
                             </div>
