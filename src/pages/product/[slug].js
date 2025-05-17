@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import { CartContext } from '@/src/contexts/CartContext'
+import React, { useContext, useState } from 'react'
 
 const Slug = ({ product }) => {
-    const [expanded, setExpanded] = useState(false)    
+    const [expanded, setExpanded] = useState(false)
+    const { addToCart } = useContext(CartContext)
     return (
         <section className="text-gray-600 body-font overflow-hidden">
             <div className="container px-5 md:py-18 py-10 mx-auto">
@@ -26,7 +28,7 @@ const Slug = ({ product }) => {
                         </p>
                         <div className="flex">
                             <span className="title-font font-medium text-2xl text-gray-900">${product?.price}</span>
-                            <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none cursor-pointer hover:bg-indigo-600 rounded">Add to cart</button>
+                            <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none cursor-pointer hover:bg-indigo-600 rounded" onClick={() => addToCart(product)}>Add to cart</button>
                         </div>
                     </div>
                 </div>
