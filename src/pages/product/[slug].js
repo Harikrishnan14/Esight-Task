@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 const Slug = ({ product }) => {
-    const [expanded, setExpanded] = useState(false)
+    const [expanded, setExpanded] = useState(false)    
     return (
         <section className="text-gray-600 body-font overflow-hidden">
             <div className="container px-5 md:py-18 py-10 mx-auto">
