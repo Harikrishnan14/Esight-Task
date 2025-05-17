@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 
-export default function Home() {
+export default function Home({ products }) {
   return (
     <>
       <Head>
@@ -13,16 +13,16 @@ export default function Home() {
 
       <section className="text-gray-600 body-font">
         <div className="container px-5 md:py-18 py-10 mx-auto">
-          <div className="flex flex-wrap -m-4">
-            {Array.from({ length: 12 }).map((_, index) => (
-              <Link className="lg:w-1/4 md:w-1/2 p-4 w-full" key={index} href={`/product/aaaa`}>
+          <div className="flex flex-wrap -m-4 gap-8 md:gap-0">
+            {products?.map((item) => (
+              <Link className="lg:w-1/4 md:w-1/2 p-6 w-full shadow-md md:shadow-none" key={item.id} href={`/product/${item?.id}`}>
                 <div className="block relative h-48 rounded overflow-hidden">
-                  <img alt="ecommerce" className="object-cover object-center w-full h-full block" src="https://dummyimage.com/420x260" />
+                  <img alt="ecommerce" className="object-contain object-center w-full h-full block" src={item?.image} />
                 </div>
                 <div className="mt-4">
-                  <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                  <h2 className="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-                  <p className="mt-1">$16.00</p>
+                  <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">{item.category}</h3>
+                  <h2 className="text-gray-700 title-font text-lg font-normal">{item?.title.length > 35 ? `${item?.title}...` : item?.title}</h2>
+                  <p className="mt-1 text-xl font-semibold text-gray-900">${item?.price}</p>
                 </div>
               </Link>
             ))}
@@ -32,4 +32,14 @@ export default function Home() {
 
     </>
   );
+}
+
+export async function getServerSideProps() {
+  const response = await fetch('https://fakestoreapi.com/products')
+  const products = await response.json()
+  return {
+    props: {
+      products
+    }
+  };
 }
