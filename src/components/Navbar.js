@@ -1,9 +1,11 @@
 import { Badge } from '@mui/material'
-import React from 'react'
+import React, { useContext } from 'react'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Link from 'next/link';
+import { CartContext } from '../contexts/CartContext';
 
 const Navbar = () => {
+    const { cart } = useContext(CartContext)
     return (
         <header className="text-gray-600 body-font sticky top-0 bg-white z-10 shadow-sm">
             <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
@@ -19,7 +21,7 @@ const Navbar = () => {
                     <Link href={'/contact'} className="mr-5 hover:text-gray-900 cursor-pointer">Contact</Link>
                 </nav>
                 <Link href={'/cart'} className="inline-flex items-center border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 cursor-pointer rounded text-base mt-4 md:mt-0">
-                    <Badge badgeContent={4} color="error">
+                    <Badge badgeContent={Object.keys(cart)?.length} color="error">
                         <ShoppingCartIcon />
                     </Badge>
                 </Link>
