@@ -18,7 +18,7 @@ export default function Home({ products }) {
 
       <section className="text-gray-600 body-font">
         <div className="container px-5 md:py-10 py-10 mx-auto">
-          <div className="flex justify-end mb-12">
+          <div className="flex justify-center md:justify-end mb-12">
             <input
               type="text"
               onChange={(e) => setSearchTerm(e.target.value)}
@@ -28,14 +28,14 @@ export default function Home({ products }) {
           </div>
           <div className="flex flex-wrap -m-4 gap-8 md:gap-0">
             {filteredProducts.length === 0 ? (
-              <div className="flex items-center justify-center w-full h-[60vh]">
+              <div className="flex items-center justify-center w-full h-[50vh] md:h-[60vh]">
                 <span className="text-gray-700 text-xl title-font font-medium">No Data!!!</span>
               </div>
             ) :
               filteredProducts?.map((item) => (
                 <Link className="lg:w-1/4 md:w-1/2 p-6 w-full shadow-md md:shadow-none" key={item.id} href={`/product/${item?.id}`}>
                   <div className="block relative h-48 rounded overflow-hidden">
-                    <img alt="ecommerce" className="object-contain object-center w-full h-full block" src={item?.image} />
+                    <img loading="lazy" alt="ecommerce" className="object-contain object-center w-full h-full block" src={item?.image} />
                   </div>
                   <div className="mt-4">
                     <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">{item.category.charAt(0).toUpperCase() + item.category.slice(1)}</h3>
