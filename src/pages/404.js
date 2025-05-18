@@ -7,7 +7,7 @@ const Custom404 = () => {
         <div className='flex flex-col items-center justify-center w-full h-[60vh]'>
             <div className='relative  w-full max-w-3xl'>
                 <img src='gifs/Custom404.gif' alt="" className="object-contain object-center w-full h-full block" />
-                <div className="absolute bottom-[-10] md:bottom-4 left-1/2 transform -translate-x-1/2 text-center">
+                <div className="absolute bottom-[-80] md:bottom-4 left-1/2 transform -translate-x-1/2 text-center">
                     <p className="text-2xl font-semibold text-gray-900 mb-4">
                         Oops, Looks like you are lost!
                     </p>
