@@ -10,7 +10,17 @@
 
    [ NOTE : npm comes with Node.js by default, you don't have to install it separately ]
 
-2. **Install Dependencies :**
+2. **Clone or Download the Code :**
+
+   Clone the repository using the following command:
+   ### `git clone https://github.com/Harikrishnan14/Esight-Task.git`
+
+   Then, navigate into the project folder:
+   ### `cd Esight-Task`
+
+   Or alternatively, download the ZIP file from GitHub and extract it.
+
+5. **Install Dependencies :**
    1. Open the terminal ( or command prompt on Windows ) ( or if you are using VS Code, you can use its terminal ) from the root folder and run the following command to install all the dependencies needed to run the application [ Don't close this terminal we will be using this later] :
       ### `npm i`
       
