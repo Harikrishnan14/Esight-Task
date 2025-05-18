@@ -10,14 +10,18 @@ export default function App({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const handleStart = () => {
-      setLoading(true);
-      document.body.style.overflow = 'hidden';
+    let currentPath = router.asPath;
+    const handleStart = (url) => {
+      if (url !== currentPath) {
+        setLoading(true);
+        document.body.style.overflow = 'hidden';
+      }
     };
 
     const handleStop = () => {
       setLoading(false);
       document.body.style.overflow = '';
+      currentPath = router.asPath;
     };
 
     router.events.on('routeChangeStart', handleStart);
